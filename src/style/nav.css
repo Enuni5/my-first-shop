@@ -1,0 +1,12 @@
+nav {
+  display: flex;
+  min-height: 10vh;
+  justify-content: space-around;
+  background-color: rgb(49, 62, 66);
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  color: white;
+}
