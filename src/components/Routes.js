@@ -8,9 +8,9 @@ import Shop from './Shop';
 const Routes = () => {
   return (
     <BrowserRouter>
+      <Nav />
       <Switch>
-        <Route exact path='/' component={Nav} />
-        <Route exact path='/home' component={Home} />
+        <Route exact path='/' component={Home} />
         <Route exact path='/shop' component={Shop} />
         <Route exact path='/shoppingcart' component={ShoppingCart} />
       </Switch>

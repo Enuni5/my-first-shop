@@ -1,8 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Sin Shop",
+  "name": "A place to pay for your sins",
   "icons": [
-   
   ],
   "start_url": ".",
   "display": "standalone",
