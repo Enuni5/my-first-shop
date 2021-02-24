@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../style/nav.css';
+import './nav.css';
 
 const Nav = () => {
   return (
     <nav>
-      <h1>MiTienda</h1>
+      <h1>La tienda de los Pecados</h1>
       <ul className='nav-links'>
         <Link to='/home'>
           <li>Inicio</li>

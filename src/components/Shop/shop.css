@@ -1,0 +1,46 @@
+:root {
+  --purple: #8e44ad;
+  --gold: #f1c40f;
+  --green: #27ae60;
+  --red: #e74c3c;
+  --grey: #95a5a6;
+  --darkred: #c0392b;
+  --blue: #2980b9;
+}
+
+.page-container {
+  display: flex;
+  max-width: 80%;
+  margin: auto;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+}
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: rgb(119, 126, 18);
+}
+
+.shopping-cart {
+  position: absolute;
+  visibility: hidden;
+}
+
+.sin-container {
+  max-width: 20%;
+  margin-top: 2vh;
+  background-color: lightblue;
+  border: 2px solid black;
+}
+
+.sin-img {
+  max-width: 100%;
+}
