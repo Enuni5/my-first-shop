@@ -4,6 +4,7 @@ import Home from './Home/Home';
 import ShoppingCart from './ShoppinCart/ShoppingCart';
 import Nav from './Nav/Nav';
 import Shop from './Shop/Shop';
+import About from './About/about';
 
 const Routes = () => {
   return (
@@ -13,6 +14,7 @@ const Routes = () => {
         <Route exact path='/' component={Home} />
         <Route exact path='/shop' component={Shop} />
         <Route exact path='/shoppingcart' component={ShoppingCart} />
+        <Route exact path='/about' component={About} />
       </Switch>
     </BrowserRouter>
   );

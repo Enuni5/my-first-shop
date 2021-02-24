@@ -107,7 +107,7 @@ const Shop = () => {
 
   function subtractUnit(e) {
     sins.map((sin, index) => {
-      if (sin.name === e.target.name) {
+      if (sin.name === e.target.name && sin.quantity > 0) {
         let sinToSubtract = [...sins];
         sinToSubtract[index].quantity--;
         setSins(sinToSubtract);
@@ -129,11 +129,12 @@ const Shop = () => {
 
       {sins.map((sin, index) => {
         return (
-          <div key={index} className='sin-container'>
-            <p className='sin-name'>{sin.name}</p>
-            <p className='sin-description'>{sin.description}</p>
-            <p className='sin-price'>{sin.price}</p>
+          <div key={index} className={`${sin.name} sin-container`}>
             <img className='sin-img' src={sin.img} alt={sin.name} />
+            <p className={`#${sin.name} sin-name`}>{sin.name}</p>
+            <p className='sin-description'>{sin.description}</p>
+            <p className='sin-price'>{sin.price}€</p>
+
             <div className='buttons-container'>
               <p className='sin-quantity'>{sin.quantity}</p>
               <button className='buttons' name={sin.name} onClick={addUnit}>

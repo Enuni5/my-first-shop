@@ -2,11 +2,26 @@ nav {
   display: flex;
   min-height: 10vh;
   justify-content: space-around;
-  background-color: rgb(49, 62, 66);
+  background: none;
   color: white;
 }
 
 .nav-links {
+  display: flex;
+  flex-flow: wrap;
   list-style: none;
   color: white;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: rgb(126, 106, 18);
 }
