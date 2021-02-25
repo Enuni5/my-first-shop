@@ -117,14 +117,18 @@ const Shop = () => {
   }
 
   return (
-    <div class='slider'>
-      <div class='slides'>
-        <div id='slide-1'>1</div>
-        <div id='slide-2'>2</div>
-        <div id='slide-3'>3</div>
-        <div id='slide-4'>4</div>
-        <div id='slide-5'>5</div>
-      </div>
+    <div class='slides'>
+      {sins.map((sin, index) => {
+        return (
+          <div
+            key={index}
+            className='slide-1'
+            style={{ backgroundImage: `url(${sin.img})` }}
+          >
+            <div className='sin-text'></div>
+          </div>
+        );
+      })}
     </div>
   );
 };
