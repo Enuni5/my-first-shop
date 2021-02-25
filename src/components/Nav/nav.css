@@ -4,6 +4,11 @@ nav {
   justify-content: space-around;
   background: none;
   color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
 }
 
 .nav-links {
@@ -13,6 +18,11 @@ nav {
   color: white;
   justify-content: space-between;
   align-items: center;
+  width: 30%;
+}
+
+a {
+  margin-left: 10px;
 }
 
 a:link,

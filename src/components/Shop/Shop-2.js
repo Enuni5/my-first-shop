@@ -8,14 +8,14 @@ import envy from './img/envy_by_j_witless_dbnlzjm.jpg';
 import lust from './img/lust_by_j_witless_dbrdwxe.jpg';
 import sloth from './img/sloth_by_j_witless_dblmbur.jpg';
 import wrath from './img/wrath_by_j_witless_dbw19jn.jpg';
-import './shop.css';
+import './shop-2.css';
 
 const Shop = () => {
   const [sins, setSins] = useState([
     {
       name: 'Soberbia',
       img: pride,
-      description: 'blablabla',
+      description: 'Puedes pagarlo con un espejo',
       price: 0,
       inCart: false,
       quantity: 0,
@@ -23,7 +23,7 @@ const Shop = () => {
     {
       name: 'Ira',
       img: wrath,
-      description: 'blablabla',
+      description: 'Puedes pagarlo con una paliza',
       price: 0,
       inCart: false,
       quantity: 0,
@@ -31,7 +31,7 @@ const Shop = () => {
     {
       name: 'Avaricia',
       img: greed,
-      description: 'blablabla',
+      description: 'Nunca lo pagarías, mejor quedarte con tu dólar',
       price: 0,
       inCart: false,
       quantity: 0,
@@ -39,7 +39,7 @@ const Shop = () => {
     {
       name: 'Envidia',
       img: envy,
-      description: 'blablabla',
+      description: 'Puedes seguir quedandote mirándolo sin comprarlo',
       price: 0,
       inCart: false,
       quantity: 0,
@@ -47,7 +47,7 @@ const Shop = () => {
     {
       name: 'Lujuria',
       img: lust,
-      description: 'blablabla',
+      description: 'Te gustaría rozarte con el tipo de aquí arriba, eeeh?',
       price: 0,
       inCart: false,
       quantity: 0,
@@ -55,7 +55,7 @@ const Shop = () => {
     {
       name: 'Gula',
       img: gluttony,
-      description: 'blablabla',
+      description: 'También puedes pagarlo con un jamón serrano',
       price: 0,
       inCart: false,
       quantity: 0,
@@ -63,7 +63,7 @@ const Shop = () => {
     {
       name: 'Pereza',
       img: sloth,
-      description: 'blablabla',
+      description: 'Paso de pensar algo...',
       price: 0,
       inCart: false,
       quantity: 0,
@@ -117,43 +117,14 @@ const Shop = () => {
   }
 
   return (
-    <div className='page-container'>
-      <div className='shopping-cart'>
-        {' '}
-        <ShoppingCart
-          quitFromCart={quitFromCart}
-          addUnit={addUnit}
-          subtractUnit={subtractUnit}
-        />
+    <div class='slider'>
+      <div class='slides'>
+        <div id='slide-1'>1</div>
+        <div id='slide-2'>2</div>
+        <div id='slide-3'>3</div>
+        <div id='slide-4'>4</div>
+        <div id='slide-5'>5</div>
       </div>
-
-      {sins.map((sin, index) => {
-        return (
-          <div key={index} className={`${sin.name} sin-container`}>
-            <img className='sin-img' src={sin.img} alt={sin.name} />
-            <p className={`#${sin.name} sin-name`}>{sin.name}</p>
-            <p className='sin-description'>{sin.description}</p>
-            <p className='sin-price'>{sin.price}€</p>
-
-            <div className='buttons-container'>
-              <p className='sin-quantity'>{sin.quantity}</p>
-              <button className='buttons' name={sin.name} onClick={addUnit}>
-                +
-              </button>
-              <button className='buttons' name={sin.name} onClick={addToCart}>
-                AddToCart
-              </button>
-              <button
-                className='buttons'
-                name={sin.name}
-                onClick={subtractUnit}
-              >
-                -
-              </button>
-            </div>
-          </div>
-        );
-      })}
     </div>
   );
 };
