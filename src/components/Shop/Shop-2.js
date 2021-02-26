@@ -8,6 +8,7 @@ import envy from './img/envy_by_j_witless_dbnlzjm.jpg';
 import lust from './img/lust_by_j_witless_dbrdwxe.jpg';
 import sloth from './img/sloth_by_j_witless_dblmbur.jpg';
 import wrath from './img/wrath_by_j_witless_dbw19jn.jpg';
+import { ReactComponent as Basket } from './img/shopping-basket.svg';
 import './shop-2.css';
 
 const Shop = () => {
@@ -117,15 +118,62 @@ const Shop = () => {
   }
 
   return (
-    <div class='slides'>
+    <div class='sin-carousel'>
       {sins.map((sin, index) => {
         return (
           <div
             key={index}
-            className='slide-1'
+            className='sin-tile'
             style={{ backgroundImage: `url(${sin.img})` }}
           >
-            <div className='sin-text'></div>
+            <div
+              className='sin-text-container'
+              style={{
+                background: `linear-gradient(to top, var(--${sin.name}) 5%,rgba(255, 255, 255, 0))`,
+              }}
+            >
+              <div
+                className='sin-name'
+                style={{ textShadow: `0px 0px 5px var(--${sin.name})` }}
+              >
+                {sin.name}
+              </div>
+              <div className='sin-info'>
+                <div className='sin-label'>
+                  <div className='sin-description'>{sin.description}</div>
+                  <div className='sin-price'>{sin.price}€</div>
+                </div>
+                <div className='sin-buttons'>
+                  <div className='actual-buttons'>
+                    <div className='quantity'>
+                      <button
+                        className='buttons'
+                        name={sin.name}
+                        onClick={subtractUnit}
+                      >
+                        -
+                      </button>
+                      <p className='sin-quantity'>{sin.quantity}</p>
+                      <button
+                        className='buttons'
+                        name={sin.name}
+                        onClick={addUnit}
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <button
+                      className='buttons add-to-cart'
+                      name={sin.name}
+                      onClick={addToCart}
+                    >
+                      <Basket className='basket' />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         );
       })}
