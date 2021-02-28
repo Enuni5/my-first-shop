@@ -5,7 +5,7 @@ import './nav.css';
 const Nav = () => {
   return (
     <nav>
-      <h1>La tienda de los Pecados</h1>
+      <h1>Paga por sus Pecados</h1>
       <ul className='nav-links'>
         <Link to='/home'>
           <li>Home</li>

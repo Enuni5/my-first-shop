@@ -73,7 +73,7 @@
   text-align: justify;
   width: 100%;
   max-height: 100%;
-  margin: 10px 8px;
+  margin: 0px 8px;
 }
 
 .sin-label > div {
@@ -83,6 +83,7 @@
 .sin-name {
   align-self: center;
   font-size: 30px;
+  margin: 0px;
 }
 
 .sin-buttons {
@@ -127,6 +128,10 @@ button {
   cursor: pointer;
 }
 
+*:focus {
+  outline: none;
+}
+
 .sin-quantity {
   margin: 0px 12px;
 }
@@ -134,6 +139,7 @@ button {
 .add-to-cart {
   margin-bottom: 4px;
   background: none;
+  border: none;
 }
 
 html,
@@ -145,4 +151,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.shopping-cart {
+  position: absolute;
+  visibility: hidden;
 }

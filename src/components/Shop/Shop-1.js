@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import ShoppingCart from '../ShoppinCart/ShoppingCart';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import gluttony from './img/7_sins__gluttony_by_j_witless_dc2ypjf.jpg';
 import greed from './img/7_sins__greed_by_j_witless_dc0hpsz.jpg';
 import pride from './img/7_sins__pride_by_j_witless_dbjxlt8.jpg';
