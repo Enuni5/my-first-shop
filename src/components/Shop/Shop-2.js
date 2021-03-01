@@ -120,7 +120,7 @@ const Shop = () => {
   return (
     <main className='page-container'>
       <div className='shopping-cart'>
-        <ShoppingCart sins={sins} quitProduct={quitFromCart} />
+        <ShoppingCart />
       </div>
       <div className='sin-carousel'>
         {sins.map((sin, index) => {
