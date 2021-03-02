@@ -22,11 +22,31 @@ const ShoppingCart = ({
   }, []);
 
   return (
-    <div>
+    <main className='cart-container'>
       {cart.map((sin, index) => {
-        return <div key={index}>{sin.name}</div>;
+        return (
+          <div className='sin-in-cart' key={index}>
+            <img src={sin.img} alt={`${sin.name}`} className='sin-img' />
+
+            <div className='data-container'>
+              <h4
+                className='in-cart-name'
+                style={{ color: `var(--${sin.name}` }}
+              >
+                {sin.name}
+              </h4>
+              <div className='sin-details'>
+                <p className='in-cart-data'>{sin.quantity} uds.</p>
+                <p className='in-cart-data'>{sin.price} €</p>
+                <p className='subtotal'>
+                  Subtotal: {sin.quantity * sin.price} €
+                </p>
+              </div>
+            </div>
+          </div>
+        );
       })}
-    </div>
+    </main>
   );
 };
 

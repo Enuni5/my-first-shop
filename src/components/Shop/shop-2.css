@@ -152,8 +152,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.shopping-cart {
-  position: absolute;
-  visibility: hidden;
-}

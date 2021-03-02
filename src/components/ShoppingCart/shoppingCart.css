@@ -1,0 +1,48 @@
+.cart-container {
+  display: flex;
+  flex-flow: column;
+  width: 500px;
+  height: fit-content;
+  justify-content: space-around;
+  align-items: baseline;
+  margin-top: 30vh;
+}
+
+.sin-in-cart {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: white;
+}
+
+.sin-img {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.data-container {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+.in-cart-name {
+  align-self: center;
+  justify-self: center;
+  margin: 10px 0px;
+  font-size: 1.5rem;
+}
+
+.sin-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.in-cart-data {
+}
+
+.subtotal {
+}
