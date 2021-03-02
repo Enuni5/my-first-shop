@@ -1,6 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from '../Home/Home';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
+import Nav from '../Nav/Nav';
+import Shop from '../Shop/Shop-2';
+import About from '../About/about';
 import gluttony from './img/7_sins__gluttony_by_j_witless_dc2ypjf.jpg';
 import greed from './img/7_sins__greed_by_j_witless_dc0hpsz.jpg';
 import pride from './img/7_sins__pride_by_j_witless_dbjxlt8.jpg';
@@ -8,65 +12,73 @@ import envy from './img/envy_by_j_witless_dbnlzjm.jpg';
 import lust from './img/lust_by_j_witless_dbrdwxe.jpg';
 import sloth from './img/sloth_by_j_witless_dblmbur.jpg';
 import wrath from './img/wrath_by_j_witless_dbw19jn.jpg';
-import './shop.css';
 
-const Shop = () => {
+import { useState } from 'react';
+
+const Routes = () => {
   const [sins, setSins] = useState([
     {
       name: 'Soberbia',
       img: pride,
       description: 'Puedes pagarlo con un espejo',
-      price: 0,
+      price: 5,
       inCart: false,
       quantity: 0,
+      uta: 0,
     },
     {
       name: 'Ira',
       img: wrath,
       description: 'Puedes pagarlo con una paliza',
-      price: 0,
+      price: 5,
       inCart: false,
       quantity: 0,
+      uta: 0,
     },
     {
       name: 'Avaricia',
       img: greed,
       description: 'Nunca lo pagarías, mejor quedarte con tu dólar',
-      price: 0,
+      price: 5,
       inCart: false,
       quantity: 0,
+      uta: 0,
     },
     {
       name: 'Envidia',
       img: envy,
       description: 'Puedes seguir quedandote mirándolo sin comprarlo',
-      price: 0,
+      price: 5,
       inCart: false,
       quantity: 0,
+      uta: 0,
     },
     {
       name: 'Lujuria',
       img: lust,
       description: 'Te gustaría rozarte con el tipo de aquí arriba, eeeh?',
-      price: 0,
+      price: 5,
       inCart: false,
       quantity: 0,
+      uta: 0,
     },
     {
       name: 'Gula',
       img: gluttony,
       description: 'También puedes pagarlo con un jamón serrano',
-      price: 0,
+      price: 5,
       inCart: false,
       quantity: 0,
+      uta: 0,
     },
     {
       name: 'Pereza',
       img: sloth,
       description: 'Paso de pensar algo...',
-      price: 0,
+      price: 5,
       inCart: false,
       quantity: 0,
+      uta: 0,
     },
   ]);
 
@@ -75,11 +87,12 @@ const Shop = () => {
       if (sin.name === e.target.name) {
         let sinToCart = [...sins];
         sinToCart[index].inCart = true;
+        sinToCart[index].quantity = sinToCart[index].uta;
+        sinToCart[index].uta = 0;
         setSins(sinToCart);
       }
       return sins;
     });
-    console.log(sins);
   }
 
   function quitFromCart(e) {
@@ -98,7 +111,7 @@ const Shop = () => {
     sins.map((sin, index) => {
       if (sin.name === e.target.name) {
         let sinToAdd = [...sins];
-        sinToAdd[index].quantity++;
+        sinToAdd[index].uta++;
         setSins(sinToAdd);
       }
       return sins;
@@ -109,61 +122,49 @@ const Shop = () => {
     sins.map((sin, index) => {
       if (sin.name === e.target.name && sin.quantity > 0) {
         let sinToSubtract = [...sins];
-        sinToSubtract[index].quantity--;
+        sinToSubtract[index].uta--;
         setSins(sinToSubtract);
       }
       return sins;
     });
   }
-
   return (
-    <div className='page-container'>
-      <div className='shopping-cart'>
-        {' '}
-        {/* <ShoppingCart
-          quitFromCart={quitFromCart}
-          addUnit={addUnit}
-          subtractUnit={subtractUnit}
-        /> */}
-      </div>
-      <div className='sin-carousel'>
-        {sins.map((sin, index) => {
-          return (
-            <div key={index} className={`${sin.name} sin-container`}>
-              <img className='sin-img' src={sin.img} alt={sin.name} />
-              <div className='sin-label'>
-                <div className='text-box'>
-                  <p className={`#${sin.name} sin-name`}>{sin.name}</p>
-                  <p className='sin-description'>{sin.description}</p>
-                  <p className='sin-price'>{sin.price}€</p>
-                </div>
-                <div className='buttons-container'>
-                  <p className='sin-quantity'>{sin.quantity}</p>
-                  <button className='buttons' name={sin.name} onClick={addUnit}>
-                    +
-                  </button>
-                  <button
-                    className='buttons'
-                    name={sin.name}
-                    onClick={addToCart}
-                  >
-                    AddToCart
-                  </button>
-                  <button
-                    className='buttons'
-                    name={sin.name}
-                    onClick={subtractUnit}
-                  >
-                    -
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <BrowserRouter>
+      <Nav />
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route
+          exact
+          path='/shop'
+          render={(props) => (
+            <Shop
+              {...props}
+              sins={sins}
+              addToCart={addToCart}
+              addUnit={addUnit}
+              subtractUnit={subtractUnit}
+            />
+          )}
+          sins={sins}
+        />
+        <Route
+          exact
+          path='/shoppingcart'
+          render={(props) => (
+            <ShoppingCart
+              {...props}
+              sins={sins}
+              quitProduct={quitFromCart}
+              addToCart={addToCart}
+              addUnit={addUnit}
+              subtractUnit={subtractUnit}
+            />
+          )}
+        />
+        <Route exact path='/about' component={About} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
-export default Shop;
+export default Routes;
