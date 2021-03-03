@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './nav.css';
 
-const Nav = () => {
+const Nav = ({ sins }) => {
+  let uds = sins.reduce((a, b) => {
+    return { quantity: a.quantity + b.quantity };
+  });
+
   return (
     <nav>
       <h1>Paga por sus Pecados</h1>
@@ -14,7 +18,7 @@ const Nav = () => {
           <li>Tienda</li>
         </Link>
         <Link to='/shoppingcart'>
-          <li>Carrito</li>
+          <li>Carrito ({uds.quantity})</li>
         </Link>
         <Link to='/about'>
           <li>About</li>

@@ -44,5 +44,25 @@
 .in-cart-data {
 }
 
-.subtotal {
+.ticket-container {
+  position: absolute;
+  top: 15vh;
+  right: 5vw;
+  display: flex;
+  flex-flow: column;
+  width: 200px;
+  height: fit-content;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.ticket-title {
+  text-align: center;
+  margin: 5px 5px;
+}
+
+.ticket-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 5px;
 }

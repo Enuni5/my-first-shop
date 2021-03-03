@@ -19,10 +19,61 @@ const ShoppingCart = ({
       }
       setCart(itemsInCart);
     });
-  }, []);
+  }, [sins]);
+
+  const [ticket, setTicket] = useState([]);
+
+  useEffect(() => {
+    let uds;
+    let subT = 0;
+    let tax = 0;
+    let total = 0;
+    let render = false;
+
+    if (cart.length > 0) {
+      uds = cart.reduce((a, b) => {
+        return { quantity: a.quantity + b.quantity };
+      });
+      let sinSubT = [];
+      sinSubT = cart.map((sin) => {
+        return sin.quantity * sin.price;
+      });
+
+      subT = sinSubT.reduce((a, b) => a + b) / 1.21;
+      tax = subT * 0.21;
+      total = (subT + tax).toFixed(2);
+      if (uds.quantity > 0) {
+        render = true;
+      }
+      const newTicket = [uds.quantity, subT, tax, total, render];
+
+      setTicket(newTicket);
+    }
+  }, [cart, sins]);
 
   return (
     <main className='cart-container'>
+      {ticket[4] && (
+        <div className='ticket-container'>
+          <h3 className='ticket-title'>TICKET</h3>
+          <div className='ticket-details'>
+            <p>Unidades en carrito: </p>
+            <p>{ticket[0]} uds.</p>
+          </div>
+          <div className='ticket-details'>
+            <p>Subtotal:</p>
+            <p>{Math.round((ticket[1] + Number.EPSILON) * 100) / 100} €</p>
+          </div>
+          <div className='ticket-details'>
+            <p>Impuestos (21%):</p>
+            <p>{Math.round((ticket[2] + Number.EPSILON) * 100) / 100} €</p>
+          </div>
+          <div className='ticket-details'>
+            <p>Total ticket: </p>
+            <p>{ticket[3]} €</p>
+          </div>
+        </div>
+      )}
       {cart.map((sin, index) => {
         return (
           <div className='sin-in-cart' key={index}>
@@ -42,6 +93,15 @@ const ShoppingCart = ({
                   Subtotal: {sin.quantity * sin.price} €
                 </p>
               </div>
+            </div>
+            <div className='cart-buttons'>
+              <button
+                className='quit'
+                name={sin.name}
+                onClick={(e) => quitFromCart(e)}
+              >
+                X
+              </button>
             </div>
           </div>
         );

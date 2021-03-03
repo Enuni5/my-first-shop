@@ -20,7 +20,7 @@ const Routes = () => {
     {
       name: 'Soberbia',
       img: pride,
-      description: 'Puedes pagarlo con un espejo',
+      description: 'Soy mejor que tú',
       price: 5,
       inCart: false,
       quantity: 0,
@@ -29,7 +29,7 @@ const Routes = () => {
     {
       name: 'Ira',
       img: wrath,
-      description: 'Puedes pagarlo con una paliza',
+      description: 'Me sacas de mis casillas',
       price: 5,
       inCart: false,
       quantity: 0,
@@ -38,7 +38,7 @@ const Routes = () => {
     {
       name: 'Avaricia',
       img: greed,
-      description: 'Nunca lo pagarías, mejor quedarte con tu dólar',
+      description: 'Todo será mío',
       price: 5,
       inCart: false,
       quantity: 0,
@@ -47,7 +47,7 @@ const Routes = () => {
     {
       name: 'Envidia',
       img: envy,
-      description: 'Puedes seguir quedandote mirándolo sin comprarlo',
+      description: 'Míralo, qué se creerá...',
       price: 5,
       inCart: false,
       quantity: 0,
@@ -56,7 +56,7 @@ const Routes = () => {
     {
       name: 'Lujuria',
       img: lust,
-      description: 'Te gustaría rozarte con el tipo de aquí arriba, eeeh?',
+      description: '¿Quiéres venir a probar un poco?',
       price: 5,
       inCart: false,
       quantity: 0,
@@ -65,7 +65,7 @@ const Routes = () => {
     {
       name: 'Gula',
       img: gluttony,
-      description: 'También puedes pagarlo con un jamón serrano',
+      description: 'Mmmm... Qué ricooo',
       price: 5,
       inCart: false,
       quantity: 0,
@@ -100,11 +100,11 @@ const Routes = () => {
       if (sin.name === e.target.name) {
         let sinToQuit = [...sins];
         sinToQuit[index].inCart = false;
+        sinToQuit[index].quantity = 0;
         setSins(sinToQuit);
       }
       return sins;
     });
-    console.log(sins);
   }
 
   function addUnit(e) {
@@ -120,7 +120,7 @@ const Routes = () => {
 
   function subtractUnit(e) {
     sins.map((sin, index) => {
-      if (sin.name === e.target.name && sin.quantity > 0) {
+      if (sin.name === e.target.name && sin.uta > 0) {
         let sinToSubtract = [...sins];
         sinToSubtract[index].uta--;
         setSins(sinToSubtract);
@@ -130,7 +130,7 @@ const Routes = () => {
   }
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav sins={sins} />
       <Switch>
         <Route exact path='/' component={Home} />
         <Route
@@ -154,7 +154,7 @@ const Routes = () => {
             <ShoppingCart
               {...props}
               sins={sins}
-              quitProduct={quitFromCart}
+              quitFromCart={quitFromCart}
               addToCart={addToCart}
               addUnit={addUnit}
               subtractUnit={subtractUnit}
