@@ -6,8 +6,8 @@ const ShoppingCart = ({
   sins,
   quitFromCart,
   addToCart,
-  addUnit,
-  subtractUnit,
+  addUnitCart,
+  subtractUnitCart,
 }) => {
   const [cart, setCart] = useState([]);
 
@@ -95,6 +95,20 @@ const ShoppingCart = ({
               </div>
             </div>
             <div className='cart-buttons'>
+              <button
+                className='add'
+                name={sin.name}
+                onClick={(e) => addUnitCart(e)}
+              >
+                +
+              </button>
+              <button
+                className='subtract'
+                name={sin.name}
+                onClick={(e) => subtractUnitCart(e)}
+              >
+                -
+              </button>
               <button
                 className='quit'
                 name={sin.name}

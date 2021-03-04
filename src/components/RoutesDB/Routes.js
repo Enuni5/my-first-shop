@@ -87,7 +87,8 @@ const Routes = () => {
       if (sin.name === e.target.name) {
         let sinToCart = [...sins];
         sinToCart[index].inCart = true;
-        sinToCart[index].quantity = sinToCart[index].uta;
+        sinToCart[index].quantity =
+          sinToCart[index].quantity + sinToCart[index].uta;
         sinToCart[index].uta = 0;
         setSins(sinToCart);
       }
@@ -128,6 +129,29 @@ const Routes = () => {
       return sins;
     });
   }
+
+  function addUnitCart(e) {
+    sins.map((sin, index) => {
+      if (sin.name === e.target.name) {
+        let sinToAdd = [...sins];
+        sinToAdd[index].quantity++;
+        setSins(sinToAdd);
+      }
+      return sins;
+    });
+  }
+
+  function subtractUnitCart(e) {
+    sins.map((sin, index) => {
+      if (sin.name === e.target.name && sin.quantity > 0) {
+        let sinToSubtract = [...sins];
+        sinToSubtract[index].quantity--;
+        setSins(sinToSubtract);
+      }
+      return sins;
+    });
+  }
+
   return (
     <BrowserRouter>
       <Nav sins={sins} />
@@ -156,8 +180,8 @@ const Routes = () => {
               sins={sins}
               quitFromCart={quitFromCart}
               addToCart={addToCart}
-              addUnit={addUnit}
-              subtractUnit={subtractUnit}
+              addUnitCart={addUnitCart}
+              subtractUnitCart={subtractUnitCart}
             />
           )}
         />
