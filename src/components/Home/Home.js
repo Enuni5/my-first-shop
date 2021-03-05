@@ -14,11 +14,11 @@ const Home = () => {
         Envíales una nota para que sepan que ya te has encargado tú de su
         depravación
       </h2>
-      <div className='shop-link'>
+      <h1 className='shop-link'>
         <Link to='/tienda'>
           <li>Compra ahora</li>
         </Link>
-      </div>
+      </h1>
     </div>
   );
 };

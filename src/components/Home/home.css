@@ -20,6 +20,7 @@ a:active {
 .shop-link {
   list-style: none;
   text-align: center;
+  font-size: 2.5rem;
 }
 
 a:hover {
