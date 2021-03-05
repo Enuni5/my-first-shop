@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
@@ -24,7 +24,7 @@ const Routes = () => {
       price: 5,
       inCart: false,
       quantity: 0,
-      uta: 0,
+      unitsToAdd: 0,
     },
     {
       name: 'Ira',
@@ -33,7 +33,7 @@ const Routes = () => {
       price: 5,
       inCart: false,
       quantity: 0,
-      uta: 0,
+      unitsToAdd: 0,
     },
     {
       name: 'Avaricia',
@@ -42,7 +42,7 @@ const Routes = () => {
       price: 5,
       inCart: false,
       quantity: 0,
-      uta: 0,
+      unitsToAdd: 0,
     },
     {
       name: 'Envidia',
@@ -51,7 +51,7 @@ const Routes = () => {
       price: 5,
       inCart: false,
       quantity: 0,
-      uta: 0,
+      unitsToAdd: 0,
     },
     {
       name: 'Lujuria',
@@ -60,7 +60,7 @@ const Routes = () => {
       price: 5,
       inCart: false,
       quantity: 0,
-      uta: 0,
+      unitsToAdd: 0,
     },
     {
       name: 'Gula',
@@ -69,7 +69,7 @@ const Routes = () => {
       price: 5,
       inCart: false,
       quantity: 0,
-      uta: 0,
+      unitsToAdd: 0,
     },
     {
       name: 'Pereza',
@@ -78,22 +78,34 @@ const Routes = () => {
       price: 5,
       inCart: false,
       quantity: 0,
-      uta: 0,
+      unitsToAdd: 0,
     },
   ]);
+
+  const [errors, setErrors] = useState([true, '']);
 
   function addToCart(e) {
     sins.map((sin, index) => {
       if (sin.name === e.target.name) {
+        if (sin.unitsToAdd === 0) {
+          addToCartError('You need to add at least one');
+        }
         let sinToCart = [...sins];
         sinToCart[index].inCart = true;
         sinToCart[index].quantity =
-          sinToCart[index].quantity + sinToCart[index].uta;
-        sinToCart[index].uta = 0;
+          sinToCart[index].quantity + sinToCart[index].unitsToAdd;
+        sinToCart[index].unitsToAdd = 0;
         setSins(sinToCart);
       }
       return sins;
     });
+  }
+
+  function addToCartError(text) {
+    setErrors([true, text]);
+    setTimeout(() => {
+      setErrors([false, '']);
+    }, 3500);
   }
 
   function quitFromCart(e) {
@@ -112,7 +124,7 @@ const Routes = () => {
     sins.map((sin, index) => {
       if (sin.name === e.target.name) {
         let sinToAdd = [...sins];
-        sinToAdd[index].uta++;
+        sinToAdd[index].unitsToAdd++;
         setSins(sinToAdd);
       }
       return sins;
@@ -121,9 +133,9 @@ const Routes = () => {
 
   function subtractUnit(e) {
     sins.map((sin, index) => {
-      if (sin.name === e.target.name && sin.uta > 0) {
+      if (sin.name === e.target.name && sin.unitsToAdd > 0) {
         let sinToSubtract = [...sins];
-        sinToSubtract[index].uta--;
+        sinToSubtract[index].unitsToAdd--;
         setSins(sinToSubtract);
       }
       return sins;
@@ -152,6 +164,17 @@ const Routes = () => {
     });
   }
 
+  useEffect(() => {
+    sins.map((sin, index) => {
+      if (sin.quantity === 0) {
+        const sinOutOfCart = [...sins];
+        sinOutOfCart[index].inCart = false;
+        setSins(sinOutOfCart);
+      }
+      return sins;
+    });
+  }, [sins]);
+
   return (
     <BrowserRouter>
       <Nav sins={sins} />
@@ -164,12 +187,12 @@ const Routes = () => {
             <Shop
               {...props}
               sins={sins}
+              errors={errors}
               addToCart={addToCart}
               addUnit={addUnit}
               subtractUnit={subtractUnit}
             />
           )}
-          sins={sins}
         />
         <Route
           exact
@@ -179,7 +202,6 @@ const Routes = () => {
               {...props}
               sins={sins}
               quitFromCart={quitFromCart}
-              addToCart={addToCart}
               addUnitCart={addUnitCart}
               subtractUnitCart={subtractUnitCart}
             />

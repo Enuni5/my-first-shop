@@ -5,7 +5,6 @@ import './shoppingCart.css';
 const ShoppingCart = ({
   sins,
   quitFromCart,
-  addToCart,
   addUnitCart,
   subtractUnitCart,
 }) => {

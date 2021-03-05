@@ -3,7 +3,7 @@ import React from 'react';
 import './shop-2.css';
 import Basket from './shopping-basket.svg';
 
-const Shop = ({ addToCart, subtractUnit, addUnit, sins }) => {
+const Shop = ({ addToCart, subtractUnit, addUnit, sins, errors }) => {
   return (
     <main className='sin-carousel'>
       {sins.map((sin, index) => {
@@ -31,6 +31,7 @@ const Shop = ({ addToCart, subtractUnit, addUnit, sins }) => {
                   <p className='sin-price'>{sin.price}€</p>
                 </div>
                 <div className='sin-buttons'>
+                  {errors[0] && <p className='errors'>{errors[1]}</p>}
                   <div className='actual-buttons'>
                     <div className='quantity'>
                       <button
@@ -40,7 +41,7 @@ const Shop = ({ addToCart, subtractUnit, addUnit, sins }) => {
                       >
                         -
                       </button>
-                      <p className='sin-quantity'>{sin.uta}</p>
+                      <p className='sin-quantity'>{sin.unitsToAdd}</p>
                       <button
                         className='buttons'
                         name={sin.name}
