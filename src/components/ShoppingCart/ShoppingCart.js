@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './shoppingCart.css';
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = ({
   sins,
@@ -17,6 +18,7 @@ const ShoppingCart = ({
         itemsInCart.push(sin);
       }
       setCart(itemsInCart);
+      return sins;
     });
   }, [sins]);
 
@@ -52,6 +54,13 @@ const ShoppingCart = ({
 
   return (
     <main className='cart-container'>
+      {!ticket[4] && (
+        <div className='empty-cart'>
+          {' '}
+          Tu carrito está vacío, ve a la <Link to='/tienda'>TIENDA</Link> y
+          añade algún pecado
+        </div>
+      )}
       {ticket[4] && (
         <div className='ticket-container'>
           <h3 className='ticket-title'>TICKET</h3>

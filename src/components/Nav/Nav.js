@@ -11,13 +11,13 @@ const Nav = ({ sins }) => {
     <nav>
       <h1>Paga por sus Pecados</h1>
       <ul className='nav-links'>
-        <Link to='/home'>
+        <Link to='/'>
           <li>Home</li>
         </Link>
-        <Link to='/shop'>
+        <Link to='/tienda'>
           <li>Tienda</li>
         </Link>
-        <Link to='/shoppingcart'>
+        <Link to='/carrito'>
           <li>Carrito ({uds.quantity})</li>
         </Link>
         <Link to='/about'>

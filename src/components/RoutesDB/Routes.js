@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from '../Home/Home';
+import Home from '/Users/Emilio/projects/my-first-shop/src/components/Home/Home.js';
+
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Nav from '../Nav/Nav';
 import Shop from '../Shop/Shop-2';
-import About from '../About/about';
+import About from '../About/About';
 import gluttony from './img/7_sins__gluttony_by_j_witless_dc2ypjf.jpg';
 import greed from './img/7_sins__greed_by_j_witless_dc0hpsz.jpg';
 import pride from './img/7_sins__pride_by_j_witless_dbjxlt8.jpg';
@@ -179,7 +180,7 @@ const Routes = () => {
         <Route exact path='/' component={Home} />
         <Route
           exact
-          path='/shop'
+          path='/tienda'
           render={(props) => (
             <Shop
               {...props}
@@ -193,7 +194,7 @@ const Routes = () => {
         />
         <Route
           exact
-          path='/shoppingcart'
+          path='/carrito'
           render={(props) => (
             <ShoppingCart
               {...props}
