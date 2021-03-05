@@ -88,7 +88,10 @@ const Routes = () => {
     sins.map((sin, index) => {
       if (sin.name === e.target.name) {
         if (sin.unitsToAdd === 0) {
-          addToCartError('You need to add at least one');
+          messageHandling('Añade al menos 1 unidad');
+        }
+        if (sin.unitsToAdd > 0) {
+          messageHandling('Añadido al carrito');
         }
         let sinToCart = [...sins];
         sinToCart[index].inCart = true;
@@ -101,7 +104,7 @@ const Routes = () => {
     });
   }
 
-  function addToCartError(text) {
+  function messageHandling(text) {
     setErrors([true, text]);
     setTimeout(() => {
       setErrors([false, '']);
@@ -160,20 +163,14 @@ const Routes = () => {
         sinToSubtract[index].quantity--;
         setSins(sinToSubtract);
       }
-      return sins;
-    });
-  }
-
-  useEffect(() => {
-    sins.map((sin, index) => {
       if (sin.quantity === 0) {
-        const sinOutOfCart = [...sins];
+        let sinOutOfCart = [...sins];
         sinOutOfCart[index].inCart = false;
         setSins(sinOutOfCart);
       }
       return sins;
     });
-  }, [sins]);
+  }
 
   return (
     <BrowserRouter>
